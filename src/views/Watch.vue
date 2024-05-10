@@ -21,7 +21,8 @@
             <v-col cols="12" sm="12" md="8" lg="8">
               <v-skeleton-loader type="card-avatar, article, actions" :loading="videoLoading" tile large>
                 <div ref="hello">
-                  <!-- <v-responsive max-height="450"> -->
+                  <v-responsive>
+                    <!-- <v-responsive max-height="450"> -->
                     <!-- <video
                       ref="videoPlayer"
                       controls
@@ -39,7 +40,7 @@
                         allowfullscreen="true" sandbox="allow-scripts allow-same-origin allow-forms">
                       </iframe>
                     </div>
-                  <!-- </v-responsive> -->
+                  </v-responsive>
 
                   <v-card flat tile class="card">
                     <v-card-title class="pl-0 pb-0">{{
