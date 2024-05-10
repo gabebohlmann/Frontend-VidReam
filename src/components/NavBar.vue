@@ -3,7 +3,7 @@
     <v-app-bar class="white" flat app clipped-left>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title class="font-weight-bold">
-        <router-link to="/" class="black--text" style="text-decoration: none">VueTube</router-link>
+        <router-link to="/" class="black--text" style="text-decoration: none">VidReam</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-text-field style="width: 20%" flat hide-details append-icon="mdi-magnify" placeholder="Search" outlined dense
@@ -37,7 +37,7 @@
         <template v-slot:activator="{ on }">
           <v-btn icon v-on="on"> <v-icon size="25">mdi-apps</v-icon></v-btn>
         </template>
-        <span>VueTube apps</span>
+        <span>VidReam apps</span>
       </v-tooltip> -->
 
       <!-- <v-tooltip bottom>
@@ -110,7 +110,7 @@
               <v-list-item-icon>
                 <v-icon>mdi-youtube-studio</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>VueTube Studio</v-list-item-title>
+              <v-list-item-title>VidReam Studio</v-list-item-title>
             </v-list-item>
             <v-list-item @click="signOut">
               <v-list-item-icon>
@@ -131,7 +131,7 @@
             'hidden-lg-and-up': $route.name === 'Watch' ? false : true
           }">
             <v-app-bar-nav-icon @click="drawer = !drawer" class="mr-5"></v-app-bar-nav-icon>
-            <v-toolbar-title class="font-weight-bold">VueTube</v-toolbar-title>
+            <v-toolbar-title class="font-weight-bold">VidReam</v-toolbar-title>
           </v-list-item>
           <v-divider class="hidden-lg-and-up"></v-divider>
           <div v-for="parentItem in items" :key="parentItem.header">
@@ -275,65 +275,65 @@ export default {
           // }
         ]
       },
-      {
-        header: 'MORE FROM VUETUBE',
-        pages: [
-          {
-            title: 'VueTube Premium',
-            link: '#vp',
-            icon: 'mdi-youtube'
-          },
-          {
-            title: 'Gaming',
-            link: '#g',
-            icon: 'mdi-youtube-gaming'
-          },
-          {
-            title: 'Live',
-            link: '#li',
-            icon: 'mdi-access-point'
-          }
-        ]
-      },
-      {
-        header: null,
-        pages: [
-          {
-            title: 'Setting',
-            link: '#sg',
-            icon: 'mdi-cog'
-          },
-          {
-            title: 'Report history',
-            link: '#rh',
-            icon: 'mdi-flag'
-          },
-          {
-            title: 'Help',
-            link: '#hp',
-            icon: 'mdi-help-circle'
-          },
-          {
-            title: 'Send feedback',
-            link: '#f',
-            icon: 'mdi-message-alert'
-          }
-        ]
-      }
+      // {
+      //   header: 'MORE FROM VidReam',
+      //   pages: [
+      //     {
+      //       title: 'VidReam Premium',
+      //       link: '#vp',
+      //       icon: 'mdi-youtube'
+      //     },
+      //     {
+      //       title: 'Gaming',
+      //       link: '#g',
+      //       icon: 'mdi-youtube-gaming'
+      //     },
+      //     {
+      //       title: 'Live',
+      //       link: '#li',
+      //       icon: 'mdi-access-point'
+      //     }
+      //   ]
+      // },
+      // {
+      //   header: null,
+      //   pages: [
+      //     {
+      //       title: 'Setting',
+      //       link: '#sg',
+      //       icon: 'mdi-cog'
+      //     },
+      //     {
+      //       title: 'Report history',
+      //       link: '#rh',
+      //       icon: 'mdi-flag'
+      //     },
+      //     {
+      //       title: 'Help',
+      //       link: '#hp',
+      //       icon: 'mdi-help-circle'
+      //     },
+      //     {
+      //       title: 'Send feedback',
+      //       link: '#f',
+      //       icon: 'mdi-message-alert'
+      //     }
+      //   ]
+      // }
     ],
-    links: [
-      { text: 'About', link: '#' },
-      { text: 'Press', link: '#' },
-      { text: 'Copyrignt', link: '#' },
-      { text: 'Contact us', link: '#' },
-      { text: 'Creators', link: '#' },
-      { text: 'Advertise', link: '#' },
-      { text: 'Developers', link: '#' },
-      { text: 'Terms', link: '#' },
-      { text: 'Privacy', link: '#' },
-      { text: 'Policy & Safety', link: '#' },
-      { text: 'Test new features', link: '#' }
-    ],
+    // links: [
+    //   { text: 'About', link: '#' },
+    //   { text: 'Press', link: '#' },
+    //   { text: 'Copyrignt', link: '#' },
+    //   { text: 'Contact us', link: '#' },
+    //   { text: 'Creators', link: '#' },
+    //   { text: 'Advertise', link: '#' },
+    //   { text: 'Developers', link: '#' },
+    //   { text: 'Terms', link: '#' },
+    //   { text: 'Privacy', link: '#' },
+    //   { text: 'Policy & Safety', link: '#' },
+    //   { text: 'Test new features', link: '#' }
+    // ],
     channelLength: 0,
     searchText: ''
     // user: null
