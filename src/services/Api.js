@@ -5,7 +5,7 @@ export default () => {
     baseURL: `${process.env.VUE_APP_URL}/api/v1`
 
   })
-  console.log('baseURL:' + baseURL)
+  console.log(`${process.env.VUE_APP_URL}/api/v1`)
   const token = localStorage.getItem('token')
   if (token) {
     axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`
