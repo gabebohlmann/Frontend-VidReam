@@ -1,8 +1,8 @@
 <template>
   <nav id="navbar">
     <v-app-bar class="white" flat app clipped-left>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title class="font-weight-bold">
+      <v-app-bar-nav-icon @click="drawer = !drawer" style=""></v-app-bar-nav-icon>
+      <v-toolbar-title class="font-weight-bold" style="padding-left: 0px;">
         <router-link to="/" class="black--text" style="text-decoration: none">VidReam</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
