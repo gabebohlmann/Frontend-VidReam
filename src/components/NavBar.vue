@@ -37,7 +37,7 @@
         <template v-slot:activator="{ on }">
           <v-btn icon v-on="on"> <v-icon size="25">mdi-apps</v-icon></v-btn>
         </template>
-        <span>VidReam apps</span>
+        <span>l apps</span>
       </v-tooltip> -->
 
       <!-- <v-tooltip bottom>
@@ -49,8 +49,9 @@
         <span>Notifications</span>
       </v-tooltip> -->
       <v-btn tile outlined color="blue" class="font-weight-bold" v-if="!$store.getters.isAuthenticated" router
-        to="/signin">
-        <v-icon left size="26">mdi-account-circle</v-icon> Sign in
+        to="/signin" style="width: 70px">
+        <!-- <v-icon left size="26">mdi-account-circle</v-icon>  -->
+        Sign in
       </v-btn>
 
       <v-menu offset-y left v-else>
