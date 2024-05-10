@@ -6,7 +6,7 @@
         <router-link to="/" class="black--text" style="text-decoration: none">VidReam</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-text-field style="width: 20%" flat hide-details append-icon="mdi-magnify" placeholder="Search" outlined dense
+      <v-text-field style="width: 25%" flat hide-details append-icon="mdi-magnify" placeholder="Search" outlined dense
         v-model="searchText" @click:append="search"></v-text-field>
 
       <v-spacer></v-spacer>
