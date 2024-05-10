@@ -2,22 +2,12 @@
   <nav id="navbar">
     <v-app-bar class="white" flat app clipped-left>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title class="font-weight-bold"
-        ><router-link to="/" class="black--text" style="text-decoration: none"
-          >VueTube</router-link
-        ></v-toolbar-title
-      >
+      <v-toolbar-title class="font-weight-bold">
+        <router-link to="/" class="black--text" style="text-decoration: none">VueTube</router-link>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-text-field
-        flat
-        hide-details
-        append-icon="mdi-magnify"
-        placeholder="Search"
-        outlined
-        dense
-        v-model="searchText"
-        @click:append="search"
-      ></v-text-field>
+      <v-text-field style="width: 20%" flat hide-details append-icon="mdi-magnify" placeholder="Search" outlined dense
+        v-model="searchText" @click:append="search"></v-text-field>
 
       <v-spacer></v-spacer>
 
@@ -25,18 +15,14 @@
         <template v-slot:activator="{ on: menu }">
           <v-tooltip bottom>
             <template v-slot:activator="{ on: tooltip }">
-              <v-btn icon class="mr-7" v-on="{ ...tooltip, ...menu }"
-                ><v-icon size="25">mdi-video-plus</v-icon></v-btn
-              >
+              <v-btn icon class="mr-7" v-on="{ ...tooltip, ...menu }"><v-icon size="25">mdi-video-plus</v-icon></v-btn>
             </template>
             <span>Create a video and more</span>
           </v-tooltip>
         </template>
         <v-list>
           <v-list-item router to="/studio">
-            <v-list-item-icon class="mr-3"
-              ><v-icon>mdi-play-box-outline</v-icon></v-list-item-icon
-            >
+            <v-list-item-icon class="mr-3"><v-icon>mdi-play-box-outline</v-icon></v-list-item-icon>
             <v-list-item-title>Upload video</v-list-item-title>
           </v-list-item>
           <!-- <v-list-item>
@@ -62,15 +48,8 @@
         </template>
         <span>Notifications</span>
       </v-tooltip> -->
-      <v-btn
-        tile
-        outlined
-        color="blue"
-        class="font-weight-bold"
-        v-if="!$store.getters.isAuthenticated"
-        router
-        to="/signin"
-      >
+      <v-btn tile outlined color="blue" class="font-weight-bold" v-if="!$store.getters.isAuthenticated" router
+        to="/signin">
         <v-icon left size="26">mdi-account-circle</v-icon> Sign in
       </v-btn>
 
@@ -78,10 +57,8 @@
         <template v-slot:activator="{ on }">
           <v-btn small color="red" depressed fab v-on="on" class="white--text">
             <v-avatar v-if="currentUser.photoUrl !== 'no-photo.jpg'">
-              <img
-                :src="`${getUrl}/uploads/avatars/${currentUser.photoUrl}`"
-                :alt="`${currentUser.channelName} avatar`"
-              />
+              <img :src="`${getUrl}/uploads/avatars/${currentUser.photoUrl}`"
+                :alt="`${currentUser.channelName} avatar`" />
             </v-avatar>
             <template v-else>
               <span class="headline">
@@ -96,18 +73,15 @@
             <v-list-item>
               <v-list-item-avatar>
                 <v-avatar v-if="currentUser.photoUrl !== 'no-photo.jpg'">
-                  <img
-                    :src="`${getUrl}/uploads/avatars/${currentUser.photoUrl}`"
-                    :alt="`${currentUser.channelName} avatar`"
-                  />
+                  <img :src="`${getUrl}/uploads/avatars/${currentUser.photoUrl}`"
+                    :alt="`${currentUser.channelName} avatar`" />
                 </v-avatar>
                 <template v-else>
                   <v-avatar color="red">
                     <span class="white--text headline ">
                       {{
                         currentUser.channelName.split('')[0].toUpperCase()
-                      }}</span
-                    >
+                      }}</span>
                   </v-avatar>
                 </template>
               </v-list-item-avatar>
@@ -126,10 +100,7 @@
           <v-divider></v-divider>
 
           <v-list>
-            <v-list-item
-              router
-              :to="`/channels/${$store.getters.currentUser._id}`"
-            >
+            <v-list-item router :to="`/channels/${$store.getters.currentUser._id}`">
               <v-list-item-icon>
                 <v-icon>mdi-account-box</v-icon>
               </v-list-item-icon>
@@ -152,122 +123,73 @@
       </v-menu>
     </v-app-bar>
 
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-      :clipped="$route.name !== 'Watch'"
-      :temporary="$route.name === 'Watch'"
-      id="nav"
-    >
+    <v-navigation-drawer v-model="drawer" app :clipped="$route.name !== 'Watch'" :temporary="$route.name === 'Watch'"
+      id="nav">
       <div tag="div" class="v-navigation-drawer__content" v-bar>
         <v-list dense nav class="py-0" tag="div">
-          <v-list-item
-            :class="{
-              'hidden-lg-and-up': $route.name === 'Watch' ? false : true
-            }"
-          >
-            <v-app-bar-nav-icon
-              @click="drawer = !drawer"
-              class="mr-5"
-            ></v-app-bar-nav-icon>
+          <v-list-item :class="{
+            'hidden-lg-and-up': $route.name === 'Watch' ? false : true
+          }">
+            <v-app-bar-nav-icon @click="drawer = !drawer" class="mr-5"></v-app-bar-nav-icon>
             <v-toolbar-title class="font-weight-bold">VueTube</v-toolbar-title>
           </v-list-item>
           <v-divider class="hidden-lg-and-up"></v-divider>
           <div v-for="parentItem in items" :key="parentItem.header">
-            <v-subheader
-              v-if="parentItem.header"
-              class="pl-3 py-4 subtitle-1 font-weight-bold text-uppercase"
-              >{{ parentItem.header }}</v-subheader
-            >
-            <v-list-item
-              v-for="(item, i) in parentItem.header === 'Subscriptions'
-                ? items[2].pages.slice(0, channelLength)
-                : parentItem.pages"
-              :key="item.title"
-              class="mb-0"
-              :to="
-                parentItem.header === 'Subscriptions'
-                  ? '/channels/' + item.channelId._id
-                  : item.link
-              "
-              exact
-              active-class="active-item"
-            >
+            <v-subheader v-if="parentItem.header" class="pl-3 py-4 subtitle-1 font-weight-bold text-uppercase">{{
+              parentItem.header }}</v-subheader>
+            <v-list-item v-for="(item, i) in parentItem.header === 'Subscriptions'
+                  ? items[2].pages.slice(0, channelLength)
+                  : parentItem.pages" :key="item.title" class="mb-0" :to="parentItem.header === 'Subscriptions'
+        ? '/channels/' + item.channelId._id
+        : item.link
+        " exact active-class="active-item">
               <v-list-item-icon v-if="parentItem.header !== 'Subscriptions'">
                 <v-icon>{{ item.icon }}</v-icon>
               </v-list-item-icon>
               <v-list-item-avatar v-else class="mr-5">
                 {{ i }}
-                <v-avatar
-                  v-if="
-                    item.channelId.photoUrl !== 'no-photo.jpg' && item.channelId
-                  "
-                >
-                  <img
-                    :src="
-                      `${getUrl}/uploads/avatars/${item.channelId.photoUrl}`
-                    "
-                    :alt="`${item.channelId.channelName} avatar`"
-                  />
+                <v-avatar v-if="item.channelId.photoUrl !== 'no-photo.jpg' && item.channelId
+                  ">
+                  <img :src="`${getUrl}/uploads/avatars/${item.channelId.photoUrl}`
+                    " :alt="`${item.channelId.channelName} avatar`" />
                 </v-avatar>
                 <template v-else>
                   <v-avatar color="red">
                     <span class="white--text headline ">
                       {{
                         item.channelId.channelName.split('')[0].toUpperCase()
-                      }}</span
-                    >
+                      }}</span>
                   </v-avatar>
                 </template>
               </v-list-item-avatar>
               <v-list-item-content>
                 <v-list-item-title class=" font-weight-medium subtitle-2">{{
                   parentItem.header === 'Subscriptions'
-                    ? item.channelId.channelName
-                    : item.title
+                  ? item.channelId.channelName
+                  : item.title
                 }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
 
-            <v-btn
-              id="showBtn"
-              @click="moreChannels"
-              v-if="
-                parentItem.header === 'Subscriptions' &&
-                  isAuthenticated &&
-                  items[2].length > 0
-              "
-              block
-              text
-              class="text-none"
-            >
+            <v-btn id="showBtn" @click="moreChannels" v-if="parentItem.header === 'Subscriptions' &&
+              isAuthenticated &&
+              items[2].length > 0
+              " block text class="text-none">
               <v-icon>{{
                 channelLength === 3 ? 'mdi-chevron-down' : 'mdi-chevron-up'
               }}</v-icon>
               {{
                 channelLength === 3
-                  ? `Show ${items[2].pages.length - 3} more `
-                  : 'Show less'
-              }}</v-btn
-            >
+                ? `Show ${items[2].pages.length - 3} more `
+                : 'Show less'
+              }}</v-btn>
 
-            <v-divider
-              v-if="parentItem.header !== false"
-              class="mt-2 mb-2"
-            ></v-divider>
+            <v-divider v-if="parentItem.header !== false" class="mt-2 mb-2"></v-divider>
           </div>
 
           <span v-for="link in links" :key="link.text">
             <span v-if="link.text === 'Terms'" class="mb-2 d-block"> </span>
-            <v-btn
-              href
-              router
-              :to="link.link"
-              text
-              class="text-capitalize px-1"
-              small
-              >{{ link.text }}</v-btn
-            >
+            <v-btn href router :to="link.link" text class="text-capitalize px-1" small>{{ link.text }}</v-btn>
           </span>
         </v-list>
       </div>
@@ -499,6 +421,7 @@ export default {
 .v-list-item__avatar {
   justify-content: center !important;
 }
+
 #showBtn {
   .v-btn__content {
     justify-content: flex-start;
@@ -508,12 +431,14 @@ export default {
     }
   }
 }
+
 #navbar {
   .active-item {
     .v-list-item__icon {
       color: red !important;
     }
   }
+
   .v-navigation-drawer__border {
     width: 0 !important;
   }
@@ -525,13 +450,13 @@ export default {
     background: #dfe9fe;
   }
 
-  .vb > .vb-dragger {
+  .vb>.vb-dragger {
     z-index: 5;
     width: 10px;
     right: 0;
   }
 
-  .vb > .vb-dragger > .vb-dragger-styler {
+  .vb>.vb-dragger>.vb-dragger-styler {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-transform: rotate3d(0, 0, 0, 0);
@@ -547,28 +472,28 @@ export default {
     display: block;
   }
 
-  .v-navigation-drawer__content:hover .vb > .vb-dragger > .vb-dragger-styler {
+  .v-navigation-drawer__content:hover .vb>.vb-dragger>.vb-dragger-styler {
     width: 10px;
     background-color: #e0e0e0;
   }
 
-  .vb.vb-scrolling-phantom > .vb-dragger > .vb-dragger-styler {
+  .vb.vb-scrolling-phantom>.vb-dragger>.vb-dragger-styler {
     background-color: rgba(48, 121, 244, 0.3);
     background-color: rgba(255, 255, 255, 0.3);
   }
 
-  .vb > .vb-dragger:hover > .vb-dragger-styler {
+  .vb>.vb-dragger:hover>.vb-dragger-styler {
     margin: 0px;
     width: 10px;
   }
 
-  .vb.vb-dragging > .vb-dragger > .vb-dragger-styler {
+  .vb.vb-dragging>.vb-dragger>.vb-dragger-styler {
     background-color: rgba(48, 121, 244, 0.5);
     margin: 0px;
     height: 100%;
   }
 
-  .vb.vb-dragging-phantom > .vb-dragger > .vb-dragger-styler {
+  .vb.vb-dragging-phantom>.vb-dragger>.vb-dragger-styler {
     background-color: rgba(48, 121, 244, 0.5);
   }
 }
