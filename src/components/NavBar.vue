@@ -15,7 +15,8 @@
         <template v-slot:activator="{ on: menu }">
           <v-tooltip bottom>
             <template v-slot:activator="{ on: tooltip }">
-              <v-btn icon class="mr-7" v-on="{ ...tooltip, ...menu }" style="width:0px"><v-icon
+              <v-btn icon class="mr-7" v-on="{ ...tooltip, ...menu }"
+                style="width:0px; padding-left:10px; padding-right: 10px"><v-icon
                   size="25">mdi-video-plus</v-icon></v-btn>
             </template>
             <span>Create a video and more</span>
