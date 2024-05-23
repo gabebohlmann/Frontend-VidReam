@@ -34,7 +34,7 @@
                       />
                     </video> -->
                     <div style="padding-top: 56.25%;">
-                      <iframe :src="`https://iframe.mediadelivery.net/embed/237902/${video.bunnyStreamId}`" loading="lazy"
+                      <iframe :src="`https://iframe.mediadelivery.net/embed/241838/${video.bunnyStreamId}`" loading="lazy"
                         style="border: none; position: absolute; top: 0; height: 100%; width: 100%;"
                         allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
                         allowfullscreen="true" sandbox="allow-scripts allow-same-origin allow-forms">
